@@ -6,8 +6,6 @@ LABEL name="chrome-headless" \
 
 ADD bin/start.sh  /usr/bin/
 
-RUN chomod u+x /usr/bin/start.sh
-
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
     ca-certificates \
@@ -31,6 +29,8 @@ RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
     && mkdir -p /home/chrome && chown -R chrome:chrome /home/chrome
 
 RUN google-chrome-stable --version
+
+RUN chmod u+x /usr/bin/start.sh
 
 USER chrome
 

@@ -6,4 +6,4 @@ if [ -n "$CHROME_ARGS" ]; then
   CHROME_ARGS="${CHROME_OPTS} ${CHROME_ARGS}"
 fi
 
-sh -c "/usr/bin/google-chrome-stable $CHROME_ARGS
+sh -c "/usr/bin/google-chrome-stable $CHROME_ARGS"
