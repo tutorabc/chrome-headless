@@ -31,7 +31,7 @@ RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
 RUN google-chrome-stable --version
 
 RUN chmod u+x /usr/bin/start.sh \
-    && chmod u+x /usr/bin/import-cert.sh \
+    && chmod u+x /usr/bin/import-cert.sh
 
 USER chrome
 
