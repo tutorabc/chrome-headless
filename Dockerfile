@@ -4,7 +4,7 @@ LABEL name="chrome-headless" \
     maintainer="tutorabc VFE <vfe@vipabc.com>" \
     description="Google Chrome Headless"
 
-ADD bin/start.sh  /usr/bin/
+ADD bin/*.sh  /usr/bin/
 
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
@@ -30,7 +30,8 @@ RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
 
 RUN google-chrome-stable --version
 
-RUN chmod u+x /usr/bin/start.sh
+RUN chmod u+x /usr/bin/start.sh \
+    && chmod u+x /usr/bin/import-cert.sh \
 
 USER chrome
 
