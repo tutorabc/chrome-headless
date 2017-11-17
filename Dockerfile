@@ -1,10 +1,12 @@
 FROM debian:sid
 
-ENV DEBUG_ADDRESS=0.0.0.0 DEBUG_PORT=9222
-
 LABEL name="chrome-headless" \ 
     maintainer="tutorabc VFE <vfe@vipabc.com>" \
     description="Google Chrome Headless"
+
+ADD bin/start.sh  /usr/bin/
+
+RUN chomod u+x /usr/bin/start.sh
 
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
@@ -27,8 +29,6 @@ RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.
 
 RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
     && mkdir -p /home/chrome && chown -R chrome:chrome /home/chrome
-
-ADD bin/start.sh  /usr/bin/
 
 USER chrome
 
