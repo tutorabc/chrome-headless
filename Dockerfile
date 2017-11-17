@@ -27,6 +27,9 @@ RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.
 
 RUN google-chrome-stable --version
 
+RUN chmod u+x /usr/bin/start.sh \
+    && chmod u+x /usr/bin/import-cert.sh
+
 RUN mkdir /data
 
 VOLUME /data
