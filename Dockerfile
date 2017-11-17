@@ -36,4 +36,4 @@ EXPOSE 9222
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["/usr/bin/start"]
+CMD ["/usr/bin/start.sh"]
