@@ -25,15 +25,11 @@ RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.
     && dpkg -i dumb-init_*.deb \
     && rm dumb-init_1.2.0_amd64.deb
 
-RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
-    && mkdir -p /home/chrome && chown -R chrome:chrome /home/chrome
-
 RUN google-chrome-stable --version
 
-RUN chmod u+x /usr/bin/start.sh \
-    && chmod u+x /usr/bin/import-cert.sh
+RUN mkdir /data
 
-USER chrome
+VOLUME /data
 
 EXPOSE 9222
 
