@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM ubuntu:xenial
 
 LABEL name="chrome-headless" \ 
     maintainer="tutorabc VFE <vfe@vipabc.com>" \
