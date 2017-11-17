@@ -2,7 +2,6 @@ FROM debian:sid
 
 LABEL name="chrome-headless" \ 
     maintainer="tutorabc VFE <vfe@vipabc.com>" \
-    version="1.0" \
     description="Google Chrome Headless"
 
 RUN apt-get update && apt-get install -y \
