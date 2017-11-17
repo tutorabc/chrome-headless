@@ -1,8 +1,14 @@
 FROM debian:sid
 
+ENV DEBUG_ADDRESS=0.0.0.0 DEBUG_PORT=9222
+
 LABEL name="chrome-headless" \ 
     maintainer="tutorabc VFE <vfe@vipabc.com>" \
     description="Google Chrome Headless"
+
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64.deb \
+    && dpkg -i dumb-init_*.deb \
+    && rm dumb-init_1.2.0_amd64.deb
 
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
@@ -21,10 +27,12 @@ RUN apt-get update && apt-get install -y \
 RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
     && mkdir -p /home/chrome && chown -R chrome:chrome /home/chrome
 
+ADD ./bin/start.sh  /usr/bin/
+
 USER chrome
 
 EXPOSE 9222
 
-ENTRYPOINT [ "google-chrome-stable" ]
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD [ "--headless", "--disable-gpu", "--remote-debugging-address=0.0.0.0", "--remote-debugging-port=9222" ]
+CMD ["/usr/bin/start"]
