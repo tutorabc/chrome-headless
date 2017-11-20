@@ -5,7 +5,7 @@ chrome headless
 
 #### How to run?
 ```shell
-$ docker run -p 9222:9222 --name -d chrome-headless tutorabcvfe/chrome-headless
+$ docker run -p 9222:9222 --name chrome-headless -d tutorabcvfe/chrome-headless
 ```
 
 #### Using docker compose
