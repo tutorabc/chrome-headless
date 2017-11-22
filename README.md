@@ -1,11 +1,11 @@
 chrome headless
 ======================
 [![Build Status](https://travis-ci.org/tutorabc/chrome-headless.svg?branch=master)](https://travis-ci.org/tutorabc/chrome-headless)
-[![Docker Pulls](https://img.shields.io/docker/pulls/tutorabcvfe/chrome-headless.svg)](https://hub.docker.com/r/tutorabcvfe/chrome-headless/tags/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/itutor/chrome-headless.svg)](https://hub.docker.com/r/itutor/chrome-headless/tags/)
 
 #### How to run?
 ```shell
-$ docker run -p 9222:9222 --name chrome-headless -d tutorabcvfe/chrome-headless
+$ docker run -p 9222:9222 --name chrome-headless -d itutor/chrome-headless
 ```
 
 #### Using docker compose
@@ -14,7 +14,7 @@ version: '2'
 
 services:
     chrome-headless:
-    image: tutorabcvfe/chrome-headless:latest
+    image: itutor/chrome-headless:latest
     restart: always
     ports:
       - 9222:9222
