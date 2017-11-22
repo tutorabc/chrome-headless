@@ -6,10 +6,10 @@ services:
   - docker
 
 script:
-  - docker build -t tutorabcvfe/chrome-headless:latest ./
+  - docker build -t itutor/chrome-headless:latest ./
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-    docker push tutorabcvfe/chrome-headless:latest;
+    docker push itutor/chrome-headless:latest;
     fi
