@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     && echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" \
     > /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update && apt-get install -y \
-    google-chrome-stable \
+    google-chrome-unstable \
     && rm -rf /var/lib/apt/lists/*
 
 RUN chmod u+x /usr/bin/dumb-init \

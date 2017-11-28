@@ -6,4 +6,4 @@ if [ -n "$CHROME_ARGS" ]; then
   ARGS="${ARGS} ${CHROME_ARGS}"
 fi
 
-sh -c "/usr/bin/google-chrome-stable $ARGS"
+sh -c "/usr/bin/google-chrome-unstable $ARGS"
