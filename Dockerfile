@@ -6,6 +6,8 @@ LABEL name="chrome-headless" \
 
 ADD bin/start.sh  /usr/bin/
 
+RUN mkdir -p /usr/share/fonts/noto
+
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
     ca-certificates \
@@ -17,8 +19,16 @@ RUN apt-get update && apt-get install -y \
     && echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" \
     > /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update && apt-get install -y \
-    google-chrome-unstable \
-    && rm -rf /var/lib/apt/lists/*
+    google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+
+# install fonts
+RUN cd /usr/share/fonts/noto && \
+    # wget https://github.com/emojione/emojione-assets/releases/download/3.1.2/emojione-android.ttf &&\
+    wget https://github.com/googlei18n/noto-cjk/blob/master/NotoSansCJKsc-Medium.otf?raw=true && \
+    wget https://github.com/CartoDB/cartodb/blob/master/app/assets/fonts/helvetica.ttf?raw=true && \
+    wget https://github.com/adampash/Lifehacker.me/blob/master/fonts/HelveticaNeue.ttf?raw=true && \
+    fc-cache -f -v
 
 RUN chmod u+x /usr/bin/dumb-init \
     /usr/bin/start.sh
